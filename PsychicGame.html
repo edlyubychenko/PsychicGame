@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Psychic Game</title>
+  </head>
+  <body>
+
+<strong> 
+<h1>Choose a letter A, B, or C</h1>
+<h2>Wins: <br></h2>
+<h2>Losses: <br></h2>
+<h2>Guesses Left:<br></h2>
+<h2>Guesses Used:<br></h2>
+</strong>
+
+      <div id="game">
+      
+
+    </div>
+<div id="result">
+  
+</div>
+    <script>
+
+
+    var wins = 0;
+    var losses = 0;
+    var guessesLeft = 5;
+
+     var options = ["A", "B", "C"];
+    
+
+     var printStats = function () {
+      console.log('========');
+      console.log('Wins: ', wins);
+      console.log('Losses: ', losses);
+      console.log('guessesLeft: ', guessesLeft);
+      console.log('========');
+     document.write("<h1>Choose a letter A, B, or C</h1><h2>Wins:"+wins+"  <br></h2><h2>Losses:"+losses+" <br></h2><h2>Guesses Left:"+guessesLeft+"<br></h2><h2>Guesses Used:<br></h2></strong>");
+     };
+ document.onkeyup = function(event) {
+ console.log(event);
+  var userGuess = event.key.toUpperCase();
+   var computerAnswer = options[Math.floor(Math.random() * options.length)];
+
+ if (computerAnswer === userGuess) {
+    alert("You're Psychic!"); 
+    wins++;  
+    guessesLeft = 5;
+  }else {
+    alert("Incorrect!")
+    guessesLeft--;
+    if  (guessesLeft === 0) { 
+      losses++;
+      alert("You Lose!");
+      guessesLeft = 5;
+    }
+  }
+  printStats();
+   
+};
+
+
+    </script>
+
+
+    
+  </body>
+</html>
